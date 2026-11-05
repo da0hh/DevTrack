@@ -86,10 +86,9 @@ class MainWindow(QMainWindow):
             }
         """)
 
-        central = QWidget()
-        self.setCentralWidget(central)
-
-        main_layout = QHBoxLayout(central)
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        main_layout = QHBoxLayout(central_widget)
         main_layout.setContentsMargins(0, 0, 0, 0)
         main_layout.setSpacing(0)
 
@@ -116,36 +115,38 @@ class MainWindow(QMainWindow):
             StatisticsPage()
         ]
 
-        self.buttons = []
+        for page in self.pages:
+            self.stack.addWidget(page)
 
-        names = [
-            "Главная",
-            "Проекты",
-            "Задачи",
-            "Заметки",
-            "Учёт времени",
-            "Статистика"
+        tabs = [
+            'Главная',
+            'Проекты',
+            'Задачи',
+            'Заметки',
+            'Учёт времени',
+            'Статистика'
         ]
 
-        for index, name in enumerate(names):
-            button = QPushButton(name)
+        self.buttons = []
+
+        for index, tab in enumerate(tabs):
+            button = QPushButton(tab)
             button.setCheckable(True)
             button.clicked.connect(
                 lambda checked, i=index: self.change_page(i)
             )
+
             sidebar_layout.addWidget(button)
             self.buttons.append(button)
 
-            self.stack.addWidget(self.pages[index])
-
         sidebar_layout.addStretch()
-
         version = QLabel("DevTrack v1.0")
         version.setStyleSheet("color: #9CA3AF;")
         sidebar_layout.addWidget(version)
 
         main_layout.addWidget(sidebar)
         main_layout.addWidget(self.stack)
+
 
         self.change_page(0)
 
