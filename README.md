@@ -122,7 +122,7 @@ DevTrack/
 ### 1. Клонирование проекта
 
 ```bash
-git clone <ссылка-на-репозиторий>
+git clone <https://github.com/da0hh/DevTrack.git>
 cd DevTrack
 ```
 
