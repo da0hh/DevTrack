@@ -7,7 +7,6 @@ from PyQt6.QtWidgets import (
     QDialog, QLineEdit, QTextEdit, QComboBox,
     QFormLayout, QMessageBox
 )
-from PyQt6.QtCore import Qt
 
 from services.project_service import (
     get_all_projects,

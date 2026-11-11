@@ -2,7 +2,6 @@ from PyQt6.QtWidgets import (
     QMainWindow, QWidget, QHBoxLayout, QVBoxLayout,
     QPushButton, QLabel, QStackedWidget, QFrame
 )
-from PyQt6.QtCore import Qt
 
 from ui.dashboard import DashboardPage
 from ui.projects_page import ProjectsPage
